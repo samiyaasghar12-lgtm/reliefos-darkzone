@@ -1,30 +1,33 @@
 import React from 'react';
 
 /**
- * ScoreGauge component for composite scores (0-100) in light mode.
+ * ScoreGauge component for composite scores (0-100).
+ * Styled with DESIGN_OVERRIDES.md status colors:
+ * High risk >= 75: Red #DC2626 (#FEE2E2), Elevated >= 50: Amber #D97706 (#FEF3C7),
+ * Safe < 50: Safe Green #16A34A (#DCFCE7). Background ring uses border color #E4DFD0.
  */
 export default function ScoreGauge({ score = 0, label = 'Score', size = 'md' }) {
   const clamped = Math.max(0, Math.min(100, Math.round(score)));
 
-  let color = 'text-emerald-700 border-emerald-200 bg-emerald-50';
-  let strokeColor = '#10B981';
+  let color = 'text-[#16A34A] border-[#86EFAC] bg-[#DCFCE7]/60';
+  let strokeColor = '#16A34A';
 
   if (clamped >= 75) {
-    color = 'text-rose-700 border-rose-200 bg-rose-50';
-    strokeColor = '#EF4444';
+    color = 'text-[#DC2626] border-[#FCA5A5] bg-[#FEE2E2]/60';
+    strokeColor = '#DC2626';
   } else if (clamped >= 50) {
-    color = 'text-amber-800 border-amber-200 bg-amber-50';
-    strokeColor = '#F59E0B';
+    color = 'text-[#D97706] border-[#FCD34D] bg-[#FEF3C7]/60';
+    strokeColor = '#D97706';
   } else if (clamped >= 25) {
-    color = 'text-sky-700 border-sky-200 bg-sky-50';
-    strokeColor = '#0284C7';
+    color = 'text-[#2F4A2B] border-[#C2D6C6] bg-[#EBF3ED]/60';
+    strokeColor = '#2F4A2B';
   }
 
   if (size === 'sm') {
     return (
-      <div className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border text-xs font-bold ${color}`}>
+      <div className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold font-heading tabular-nums ${color}`}>
         <span>{clamped}</span>
-        {label && <span className="text-[10px] opacity-75 font-normal uppercase">{label}</span>}
+        {label && <span className="text-xs opacity-75 font-normal uppercase">{label}</span>}
       </div>
     );
   }
@@ -34,14 +37,14 @@ export default function ScoreGauge({ score = 0, label = 'Score', size = 'md' }) 
   const strokeDashoffset = circumference - (clamped / 100) * circumference;
 
   return (
-    <div className={`inline-flex items-center gap-3 rounded-xl border p-2.5 shadow-2xs ${color}`}>
-      <div className="relative h-12 w-12 flex items-center justify-center">
+    <div className={`inline-flex items-center gap-3 rounded-[12px] border p-3 shadow-2xs ${color}`}>
+      <div className="relative h-12 w-12 flex items-center justify-center shrink-0">
         <svg className="h-12 w-12 -rotate-90 transform" viewBox="0 0 48 48">
           <circle
             cx="24"
             cy="24"
             r={radius}
-            stroke="#E2E8F0"
+            stroke="#E4DFD0"
             strokeWidth="4"
             fill="transparent"
           />
@@ -58,11 +61,11 @@ export default function ScoreGauge({ score = 0, label = 'Score', size = 'md' }) 
             className="transition-all duration-500"
           />
         </svg>
-        <span className="absolute text-sm font-black text-slate-800">{clamped}</span>
+        <span className="absolute text-sm font-black font-heading tabular-nums text-[#1C2A1F]">{clamped}</span>
       </div>
       <div>
-        <div className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{label}</div>
-        <div className="text-xs font-bold text-slate-900">
+        <div className="text-xs font-semibold uppercase tracking-wider text-[#5F6B5E]">{label}</div>
+        <div className="text-xs font-bold text-[#1C2A1F]">
           {clamped >= 75 ? 'Critical Risk' : clamped >= 50 ? 'Elevated' : 'Moderate'}
         </div>
       </div>

@@ -193,5 +193,17 @@ Camp D to Camp B water suggestion  ✓  qty: 460  dist: 5.9 km
 
 ---
 
+## Step 12 — Design Overrides & Forest Green Theme System ✅
+
+### Done
+- [x] **Typography & Offline Precaching**: Installed `@fontsource-variable/hanken-grotesk` and `@fontsource-variable/public-sans`, imported in `src/main.jsx`, configured `woff2` in `vite.config.js` workbox precaching, and updated manifest colors.
+- [x] **Theme Tokens & Styling (`src/index.css`)**: Replaced navy palette with deep forest `#1F3D2B`, warm cream background `#F6F3EA`, card surfaces `#FFFDF7` with `#E4DFD0` border, primary buttons `#2F4A2B` (hover `#243A21`), and active sidebar pill `#2F5A3A`.
+- [x] **Dark Zone Hero Styling**: Implemented `#F5F3FF` background, `#A78BFA` border, `#7C3AED` left accent, purple pill tags, and slow CSS pulse ring with `Potential Dark Zone · Silence ratio ≥ 0.6` tooltip.
+- [x] **Shell Layout & Chrome**: Updated `Layout.jsx`, `Header.jsx`, and `Sidebar.jsx` with deep forest green chrome, white text, and `#2F5A3A` active pills.
+- [x] **11 Shared Components**: Styled `StatCard` (40px bold Hanken Grotesk metric), `StatusBadge` (safe green check icon, red high risk, amber warning, purple Dark Zone), `SuggestedChip`, `TagChip`, `LowConfidenceBanner`, `ScoreGauge`, `ProgressBar`, `EmptyState`, `ErrorState`, `Skeleton`, and `ConfirmDialog`.
+- [x] **Build & Logic Verification**: `npm run build` and `npm run check` completed cleanly with exit code 0; all woff2 assets precached.
+
+---
+
 ## Next Step (waiting for "haan")
-- All planned steps completed. Ready for review or next instructions.
+- Waiting for user's "haan" to proceed to subsequent screen refinements or testing.

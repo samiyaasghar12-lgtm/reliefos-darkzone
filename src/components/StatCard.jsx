@@ -2,7 +2,7 @@ import React from 'react';
 
 /**
  * StatCard component for summary metrics across dashboards.
- * White cards with #E2E8F0 border and light theme tokens.
+ * Warm cream #FFFDF7 card with #E4DFD0 border, 12px radius, and 40px bold Hanken Grotesk metrics.
  */
 export default function StatCard({
   title,
@@ -15,45 +15,45 @@ export default function StatCard({
   onClick,
 }) {
   const variantStyles = {
-    default: 'border-[#E2E8F0] bg-white text-[#0F172A] hover:border-slate-300',
-    danger: 'border-rose-200 bg-rose-50/60 text-rose-950 hover:border-rose-300',
-    warning: 'border-amber-200 bg-amber-50/60 text-amber-950 hover:border-amber-300',
-    success: 'border-emerald-200 bg-emerald-50/60 text-emerald-950 hover:border-emerald-300',
-    info: 'border-sky-200 bg-sky-50/60 text-sky-950 hover:border-sky-300',
-    purple: 'border-purple-200 bg-purple-50/60 text-purple-950 hover:border-purple-300',
+    default: 'border-[#E4DFD0] bg-[#FFFDF7] text-[#1C2A1F] hover:border-[#D5CEBE]',
+    danger: 'border-[#DC2626]/30 bg-[#FEE2E2]/60 text-[#1C2A1F] hover:border-[#DC2626]/50',
+    warning: 'border-[#D97706]/30 bg-[#FEF3C7]/60 text-[#1C2A1F] hover:border-[#D97706]/50',
+    success: 'border-[#16A34A]/30 bg-[#DCFCE7]/60 text-[#1C2A1F] hover:border-[#16A34A]/50',
+    info: 'border-[#6B8F5E]/30 bg-[#F6F3EA] text-[#1C2A1F] hover:border-[#6B8F5E]/50',
+    purple: 'border-[#A78BFA] border-l-[3px] border-l-[#7C3AED] bg-[#F5F3FF] text-[#1C2A1F] hover:border-[#8B5CF6]',
   };
 
   const valueColors = {
-    default: 'text-[#0F172A]',
-    danger: 'text-rose-600',
-    warning: 'text-amber-600',
-    success: 'text-emerald-600',
-    info: 'text-sky-600',
-    purple: 'text-purple-600',
+    default: 'text-[#1C2A1F]',
+    danger: 'text-[#DC2626]',
+    warning: 'text-[#D97706]',
+    success: 'text-[#16A34A]',
+    info: 'text-[#2F4A2B]',
+    purple: 'text-[#7C3AED]',
   };
 
   return (
     <div
       onClick={onClick}
-      className={`relative overflow-hidden rounded-xl border p-5 shadow-xs transition-all duration-200 ${
+      className={`relative overflow-hidden rounded-[12px] border p-5 shadow-[0_1px_3px_rgba(28,42,31,0.04)] transition-all duration-200 ${
         variantStyles[variant] || variantStyles.default
-      } ${highlight ? 'ring-2 ring-rose-400 shadow-md shadow-rose-100' : ''} ${
+      } ${highlight ? 'ring-2 ring-[#DC2626] shadow-md' : ''} ${
         onClick ? 'cursor-pointer hover:scale-[1.01]' : ''
       }`}
     >
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">{title}</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#5F6B5E]">{title}</p>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className={`text-3xl font-extrabold tracking-tight ${valueColors[variant] || 'text-[#0F172A]'}`}>
+            <span className={`text-[40px] font-bold font-heading tabular-nums leading-none ${valueColors[variant] || 'text-[#1C2A1F]'}`}>
               {value}
             </span>
-            {trend && <span className="text-xs font-medium text-slate-500">{trend}</span>}
+            {trend && <span className="text-xs font-medium text-[#5F6B5E]">{trend}</span>}
           </div>
-          {subtitle && <p className="mt-1 text-xs text-slate-500">{subtitle}</p>}
+          {subtitle && <p className="mt-1.5 text-xs text-[#5F6B5E]">{subtitle}</p>}
         </div>
         {icon && (
-          <div className="rounded-lg bg-slate-100 p-2.5 text-slate-700 border border-slate-200">
+          <div className="rounded-lg bg-[#F6F3EA] p-2.5 text-[#1C2A1F] border border-[#E4DFD0]">
             {icon}
           </div>
         )}

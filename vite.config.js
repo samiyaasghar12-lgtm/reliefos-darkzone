@@ -13,7 +13,7 @@ export default defineConfig({
       includeAssets: ['favicon.svg', 'icons.svg', 'icon-192.png', 'icon-512.png'],
       // App shell cache — serves the app even with no network
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,woff2}'],
         runtimeCaching: [
           {
             // Runtime cache for OpenStreetMap tiles that were already viewed (limited entries)
@@ -36,8 +36,8 @@ export default defineConfig({
         name: 'ReliefOS + DARK ZONE',
         short_name: 'ReliefOS',
         description: 'Disaster Response: finding who needs help most',
-        theme_color: '#0F172A',
-        background_color: '#0F172A',
+        theme_color: '#1F3D2B',
+        background_color: '#F6F3EA',
         display: 'standalone',
         icons: [
           { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },

@@ -1,26 +1,30 @@
 import React from 'react';
 
 /**
- * TagChip component for categorized badges in light mode.
+ * TagChip component with DESIGN_OVERRIDES.md status tokens.
+ * Silent Risk / Dark Zone is formatted as a purple pill (#F5F3FF / #7C3AED / #A78BFA).
+ * Labels are minimum 12px for projector legibility.
  */
 export default function TagChip({ tag, variant }) {
   const normTag = (tag || '').toLowerCase();
 
-  let styles = 'bg-slate-100 text-slate-700 border-slate-200';
+  let styles = 'bg-[#F0EDE4] text-[#1C2A1F] border-[#D5CEBE]';
 
   if (variant === 'silent_risk' || normTag.includes('silent') || normTag.includes('dark')) {
-    styles = 'bg-purple-50 text-purple-800 border-purple-200';
-  } else if (variant === 'reported' || normTag.includes('reported')) {
-    styles = 'bg-sky-50 text-sky-800 border-sky-200';
-  } else if (variant === 'danger' || normTag.includes('critical')) {
-    styles = 'bg-rose-50 text-rose-800 border-rose-200';
+    styles = 'bg-[#F5F3FF] text-[#7C3AED] border-[#A78BFA]';
+  } else if (variant === 'danger' || normTag.includes('critical') || normTag.includes('high')) {
+    styles = 'bg-[#FEE2E2] text-[#DC2626] border-[#FCA5A5]';
+  } else if (variant === 'warning' || normTag.includes('warn')) {
+    styles = 'bg-[#FEF3C7] text-[#D97706] border-[#FCD34D]';
   } else if (variant === 'success' || normTag.includes('safe') || normTag.includes('verified')) {
-    styles = 'bg-emerald-50 text-emerald-800 border-emerald-200';
+    styles = 'bg-[#DCFCE7] text-[#16A34A] border-[#86EFAC]';
+  } else if (variant === 'reported' || normTag.includes('reported')) {
+    styles = 'bg-[#EBF3ED] text-[#2F4A2B] border-[#C2D6C6]';
   }
 
   return (
     <span
-      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold tracking-wide border ${styles}`}
+      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide border ${styles}`}
     >
       {tag}
     </span>

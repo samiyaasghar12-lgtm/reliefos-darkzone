@@ -5,22 +5,22 @@ export default function Header() {
   const { role, setRole, isOnline, isDemoData, pendingSyncCount } = useAppStore();
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b border-[#E2E8F0] bg-white px-6 shadow-xs">
+    <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b border-[#173022] bg-[#1F3D2B] px-6 text-white shadow-xs">
       {/* Left: Brand / Title */}
       <div className="flex items-center gap-3">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#0F172A] text-white shadow-xs">
+        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#2F5A3A] text-white border border-[#3E6F4D] shadow-xs">
           <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
         </div>
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-base font-black tracking-tight text-[#0F172A]">ReliefOS</span>
-            <span className="rounded bg-rose-50 px-1.5 py-0.5 text-[10px] font-bold text-rose-700 border border-rose-200">
+            <span className="text-lg font-black tracking-tight text-white font-heading">ReliefOS</span>
+            <span className="rounded-full bg-[#F5F3FF] px-2 py-0.5 text-xs font-bold text-[#7C3AED] border border-[#A78BFA]">
               DARK ZONE
             </span>
           </div>
-          <p className="text-[10px] font-medium text-slate-500">Finding who needs help most</p>
+          <p className="text-xs font-medium text-emerald-100/75">Finding who needs help most</p>
         </div>
       </div>
 
@@ -28,42 +28,42 @@ export default function Header() {
       <div className="flex items-center gap-3">
         {/* Demo Data Chip */}
         {isDemoData && (
-          <div className="flex items-center gap-1.5 rounded-full border border-sky-200 bg-sky-50 px-2.5 py-1 text-xs font-semibold text-sky-700">
-            <span className="h-1.5 w-1.5 rounded-full bg-sky-600" />
+          <div className="flex items-center gap-1.5 rounded-full border border-[#376145] bg-[#244230] px-3 py-1 text-xs font-semibold text-emerald-200">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
             <span>Demo data</span>
           </div>
         )}
 
         {/* Online / Offline Status Chip */}
         <div
-          className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold transition-colors ${
+          className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition-colors ${
             isOnline
-              ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
-              : 'border-amber-300 bg-amber-50 text-amber-800 animate-pulse'
+              ? 'border-[#16A34A]/50 bg-[#16A34A]/20 text-emerald-100'
+              : 'border-[#D97706]/50 bg-[#D97706]/20 text-amber-200 animate-pulse'
           }`}
         >
           <span
             className={`h-2 w-2 rounded-full ${
-              isOnline ? 'bg-emerald-500' : 'bg-amber-500 animate-ping'
+              isOnline ? 'bg-[#16A34A]' : 'bg-[#D97706] animate-ping'
             }`}
           />
           <span>{isOnline ? 'Online' : 'Offline'}</span>
           {pendingSyncCount > 0 && (
-            <span className="ml-1 rounded-full bg-amber-200 px-1.5 py-0.2 text-[10px] font-bold text-amber-900">
+            <span className="ml-1 rounded-full bg-[#D97706] px-2 py-0.5 text-xs font-bold text-white">
               {pendingSyncCount} pending
             </span>
           )}
         </div>
 
         {/* Role Switcher: "Admin" and "Volunteer" */}
-        <div className="flex items-center rounded-xl border border-slate-200 bg-slate-100 p-1 text-xs">
+        <div className="flex items-center rounded-xl border border-[#2B4E38] bg-[#162D20] p-1 text-xs">
           <button
             type="button"
             onClick={() => setRole('admin')}
-            className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all ${
+            className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all focus-visible:outline-2 focus-visible:outline-[#6B8F5E] ${
               role === 'admin'
-                ? 'bg-white text-[#0F172A] shadow-xs font-bold border border-slate-200/80'
-                : 'text-slate-500 hover:text-slate-800'
+                ? 'bg-[#2F5A3A] text-white shadow-xs font-bold border border-[#3E6F4D]'
+                : 'text-emerald-100/75 hover:text-white'
             }`}
           >
             <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -74,10 +74,10 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setRole('volunteer')}
-            className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all ${
+            className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all focus-visible:outline-2 focus-visible:outline-[#6B8F5E] ${
               role === 'volunteer'
-                ? 'bg-white text-[#0F172A] shadow-xs font-bold border border-slate-200/80'
-                : 'text-slate-500 hover:text-slate-800'
+                ? 'bg-[#2F5A3A] text-white shadow-xs font-bold border border-[#3E6F4D]'
+                : 'text-emerald-100/75 hover:text-white'
             }`}
           >
             <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
